@@ -59,7 +59,22 @@ namespace MyProgramLol
     }
 }
 ```
-
-
-
+To avoid exceptions in the future, we will write this code in Action.
+```C#
+public void Action(string[] args)
+{
+   if (WCommand.SetError(args, minArgsRequired: 1, "Type 'help' to see all commands."))
+       return;
+}
+```
+This code checks the command arguments and displays a prompt if the command is entered incorrectly. Let's look at it in detail:
+- Argument checking:
+  - SetError method then the argument array matches the conditions:
+  - arguments != zero
+  - args.Length >= minArgsRequired (in this case, at least 1 argument is required).
+- Help output:
+  - If the check fails (no arguments), a generated message is output.
+- Exit execution:
+  - If the result condition (i.e. no arguments), the method returns true.
+  - Removing the return, which terminates this method
 / I'll leave this here for now and continue later.
